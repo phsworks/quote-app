@@ -2,19 +2,19 @@ import { View, Text, StyleSheet } from 'react-native';
 
 function QuoteScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Your Text Here</Text>
+    <View style={styles.mainContainer}>
+      <Text></Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff'
-  }
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ededed",
+  },
 });
 
 export default QuoteScreen;

@@ -17,9 +17,13 @@ function QuotelyOverview() {
     <BottomTabs.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#25a1da",
-        tabBarInactiveTintColor: "#89d7fc",
+        tabBarActiveTintColor: "#A0D9DB",
+        tabBarInactiveTintColor: "#4a5a5b",
         tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: "#ededed",
+          borderColor: "#ededed",
+        },
       }}
     >
       <BottomTabs.Screen
@@ -61,20 +65,10 @@ export default function App() {
         <Stack.Screen
           name="Quotely Overview"
           component={QuotelyOverview}
-          options={{
-            backgroundColor: "#25a1da",
-          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#25a1da",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+
