@@ -8,6 +8,7 @@ import Feather from "@expo/vector-icons/Feather";
 import QuoteMainScreen from "./screens/QuotesMainScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import QuoteCategoriesScreen from "./screens/QuoteCategoriesScreen";
+import FavoritesScreen from "./screens/FavoritesScreen";
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -17,11 +18,10 @@ function QuotelyOverview() {
     <BottomTabs.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#A0D9DB",
+        tabBarActiveTintColor: "#8EEAEE",
         tabBarInactiveTintColor: "#4a5a5b",
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: "#ededed",
           borderColor: "#ededed",
         },
       }}
@@ -47,6 +47,15 @@ function QuotelyOverview() {
       <BottomTabs.Screen
         options={{
           tabBarIcon: ({ color, size }) => (
+            <Feather name="heart" size={size} color={color} />
+          ),
+        }}
+        name="Favorites"
+        component={FavoritesScreen}
+      />
+      <BottomTabs.Screen
+        options={{
+          tabBarIcon: ({ color, size }) => (
             <Feather name="user" size={size} color={color} />
           ),
         }}
@@ -62,13 +71,8 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style="auto" />
       <Stack.Navigator>
-        <Stack.Screen
-          name="Quotely Overview"
-          component={QuotelyOverview}
-        />
+        <Stack.Screen name="Quotely Overview" component={QuotelyOverview} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-
