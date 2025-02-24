@@ -30,7 +30,7 @@ function QuotelyOverview() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="home" size={size} color={color} />
-          ),
+          )
         }}
         name="Quotes"
         component={QuoteMainScreen}
@@ -71,7 +71,9 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style="auto" />
       <Stack.Navigator>
-        <Stack.Screen name="Quotely Overview" component={QuotelyOverview} />
+        <Stack.Screen name="Quotely Overview" component={QuotelyOverview} options={{
+          headerShown: false
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

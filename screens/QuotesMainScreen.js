@@ -1,6 +1,8 @@
-import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import { View, Text, StyleSheet, FlatList, Animated, Dimensions } from "react-native";
 import { supabase } from "../supabase/config";
 import { useState, useEffect } from "react";
+import QuoteCard from "../components/QuoteCard";
+import { LinearGradient } from "expo-linear-gradient";
 
 function QuoteScreen() {
   const [quotes, setQuotes] = useState([]);
@@ -28,20 +30,23 @@ function QuoteScreen() {
     );
   }
 
+
   return (
     <View style={styles.mainContainer}>
-      <FlatList
-        data={quotes}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.quoteContainer}>
-            <Text style={styles.quoteText}>{item.quote}</Text>
-            {item.author_imageURL && (
-              <Image source={{ uri: item.author_imageURL }} style={styles.image} />
-            )}
-          </View>
-        )}
-      />
+        <FlatList
+          data={quotes}
+          keyExtractor={(item) => item.id}
+          style={styles.listStyle}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          snapToAlignment="center"
+          decelerationRate="fast"
+          renderItem={({ item, index }) => (
+              <QuoteCard index={index} item={item} />
+          )}
+          snapToInterval={Dimensions.get("window").width}
+        />
     </View>
   );
 }
@@ -51,27 +56,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    justifyContent: "center",
+    backgroundColor: "#ffffff",
+    paddingTop: 100
   },
-  quoteContainer: {
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  quoteText: {
-    fontSize: 15,
-    marginBottom: 10,
-    textAlign: "center",
-    color: "black",
+  listStyle: {
+    paddingHorizontal: 20,
+    gap: 30,
+
   },
   errorText: {
     color: "red",
     fontSize: 18,
     textAlign: "center",
-  },
-  image: {
-    width: 100,
-    height: 100,
-    marginTop: 100,
   },
 });
 
