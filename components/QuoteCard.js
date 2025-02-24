@@ -34,13 +34,15 @@ function QuoteCard({ item, index }) {
             <Text style={{ fontWeight: 700, fontSize: 18 }}>
               {item.quote_category}
             </Text>
-            <Text>{item.author_name}</Text>
+            <Text style={{fontStyle: "italic"}}>{item.author_name}</Text>
+            <View style={styles.origins}>
+              <Text>{item.author_nationality}</Text>
+              <Text>{item.author_occupation}</Text>
+            </View>
           </View>
         </View>
         <View style={styles.quoteSection}>
-          <Text style={styles.quoteText}>
-            {item.quote}
-          </Text>
+          <Text style={styles.quoteText}>{item.quote}</Text>
         </View>
         <View style={styles.cardBottom}>
           <Text>share</Text>
@@ -57,7 +59,6 @@ const styles = StyleSheet.create({
     width: 350,
     marginLeft: 3,
     marginRight: 20,
-
   },
   quoteContainer: {
     flex: 1,
@@ -70,10 +71,11 @@ const styles = StyleSheet.create({
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
   },
   quoteInfo: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
     maxWidth: 120,
+    gap: 5,
   },
   quoteSection: {
     width: 300,
@@ -96,8 +98,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     flexDirection: "row",
-    gap: 60,
+    gap: 40,
   },
+  origins: {
+    flexDirection: 'row',
+    gap: 5,
+  }
 });
 
 export default QuoteCard;
