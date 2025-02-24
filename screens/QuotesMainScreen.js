@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, Image } from "react-native";
 import { supabase } from "../supabase/config";
 import { useState, useEffect } from "react";
 
@@ -34,7 +34,12 @@ function QuoteScreen() {
         data={quotes}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Text style={styles.quoteText}>{item.quote}</Text>
+          <View style={styles.quoteContainer}>
+            <Text style={styles.quoteText}>{item.quote}</Text>
+            {item.author_imageURL && (
+              <Image source={{ uri: item.author_imageURL }} style={styles.image} />
+            )}
+          </View>
         )}
       />
     </View>
@@ -48,8 +53,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
   },
+  quoteContainer: {
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   quoteText: {
-    fontSize: 18,
+    fontSize: 15,
     marginBottom: 10,
     textAlign: "center",
     color: "black",
@@ -58,6 +67,11 @@ const styles = StyleSheet.create({
     color: "red",
     fontSize: 18,
     textAlign: "center",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginTop: 100,
   },
 });
 
