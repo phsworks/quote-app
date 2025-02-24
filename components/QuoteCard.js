@@ -6,9 +6,11 @@ function QuoteCard({ item, index }) {
     const gradients = [
       ["#ff583346", "#ffc4004f"],
       ["#33ff5824", "#00c5cc4b"],
-      ["#3357FF", "#8B00C4"],
-      ["#FF3357", "#C40033"],
-      ["#5733FF", "#33FF8B"],
+      ["#fc466a2b", "#3f5efb3b"],
+      ["#1f40373b", "#99f2c83b"],
+      ["#d9a7c73f", "#fffcdc43"],
+      ["#ff99663d", "#ff5e6137"],
+      ["#d9a7c739", "#fffcdc30"],
     ];
     return gradients[index % gradients.length];
   };
@@ -29,12 +31,16 @@ function QuoteCard({ item, index }) {
             />
           )}
           <View style={styles.quoteInfo}>
-            <Text style={{fontWeight: 700, fontSize: 18}}>{item.quote_category}</Text>
+            <Text style={{ fontWeight: 700, fontSize: 18 }}>
+              {item.quote_category}
+            </Text>
             <Text>{item.author_name}</Text>
           </View>
         </View>
         <View style={styles.quoteSection}>
-          <Text style={styles.quoteText}>{item.quote}</Text>
+          <Text style={styles.quoteText}>
+            {item.quote}
+          </Text>
         </View>
         <View style={styles.cardBottom}>
           <Text>share</Text>
@@ -51,14 +57,14 @@ const styles = StyleSheet.create({
     width: 350,
     marginLeft: 3,
     marginRight: 20,
-    
+
   },
   quoteContainer: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    gap: 60,
+    gap: 50,
     borderRadius: 20,
     elevation: 4,
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
@@ -67,6 +73,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    maxWidth: 120,
   },
   quoteSection: {
     width: 300,
